@@ -1,0 +1,46 @@
+{
+  "name": "grunt-spring-cleaning",
+  "description": "A plugin to scrape your html files for spring properties (for i18n) and extract a list of required properties. The list can be converted into a JS object (in a script tag of a velocity page) or to create test data in your spa.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/joshball/grunt-spring-cleaning",
+  "author": {
+    "name": "Joshua Ball",
+    "email": "joshua.g.s.ball@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:joshball/grunt-spring-cleaning.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joshball/grunt-spring-cleaning/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/joshball/grunt-spring-cleaning/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.2"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "cheerio": "~0.12.4",
+    "lodash": "~2.4.1"
+  }
+}
