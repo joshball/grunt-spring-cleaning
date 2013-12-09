@@ -17,7 +17,21 @@ module.exports = function (grunt) {
         var props = [];
         $('[data-i18n]').each(function(i, elem) {
             var property = $(elem).attr('data-i18n');
-            props.push(property);
+            var propArray = property.split(';');
+            propArray.forEach(function(prop){
+                // strip out any attributes:
+                // <a href="#" data-i18n="[title]link_title;link_text"></a>
+                // removes [title]
+                var index = prop.indexOf(']');
+                if(index > 0){
+                    if(prop.length <= index){
+                        throw new Error('malformed property:'+prop);
+                    }
+                    props.push(prop.slice(index+1));
+                } else {
+                    props.push(prop);
+                }
+            })
         });
         return props;
     };
@@ -29,7 +43,7 @@ module.exports = function (grunt) {
     function doNormProps(properties){
         var obj = {};
         properties.forEach(function(property, index, array){
-            var prop = property.replace(/\./,'_');
+            var prop = property.replace(/\./g,'_');
             obj[prop] = property;
         });
         return JSON.stringify(obj, undefined, 4);
@@ -38,7 +52,7 @@ module.exports = function (grunt) {
     function doSpringProps(properties){
         var obj = {};
         properties.forEach(function(property, index, array){
-            var prop = property.replace(/\./,'_');
+            var prop = property.replace(/\./g,'_');
             obj[prop] = '#springMessage( \'' + property + '\' )';
         });
         return JSON.stringify(obj, undefined, 4);
